@@ -8,6 +8,8 @@ from django.contrib.auth.models import User
 from .models import Summary, Movement
 from .serializers import SummarySerializer, MovementSerializer, UserSerializer
 
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView
 from django.shortcuts import get_object_or_404
 
 
@@ -20,6 +22,20 @@ class RegisterView(APIView):
         except Exception as e:
             print(e)
             return Response({"message": "User already exist"}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+
+        token['name'] = user.username
+
+        return token
+
+
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
 
 
 @permission_classes([IsAuthenticated])
