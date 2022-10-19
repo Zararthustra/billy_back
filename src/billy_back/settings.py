@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    'billy_back'
+    'billy_back',
+    'rest_framework'
+
 ]
 
 MIDDLEWARE = [
