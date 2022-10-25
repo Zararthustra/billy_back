@@ -16,7 +16,7 @@ from django.shortcuts import get_object_or_404
 class RegisterView(APIView):
     def post(self, request):
         try:
-            User.objects.create_user(username=request.data["name"],
+            User.objects.create_user(username=request.data["username"],
                                      password=request.data["password"])
             return Response({"message": "User created successfully"}, status=status.HTTP_201_CREATED)
         except Exception as e:
