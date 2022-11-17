@@ -104,6 +104,10 @@ class SummaryMethods(APIView):
 
     def delete(self, request, pk):
         summary = get_object_or_404(Summary, pk=pk)
+        movements = Movement.objects.filter(
+            year=summary.year, month=summary.month, user=request.user)
+        for movement in movements:
+            movement.delete()
         summary.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
