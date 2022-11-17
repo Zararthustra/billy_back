@@ -1,6 +1,6 @@
 from rest_framework.response import Response
 from rest_framework.decorators import permission_classes
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.views import APIView
 from rest_framework import status
 
@@ -38,8 +38,8 @@ class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
 
-@permission_classes([IsAuthenticated])
 class AccountsMethods(APIView):
+    permission_classes = [IsAdminUser]
 
     def get(self, request):
         users = User.objects.all()
@@ -47,8 +47,8 @@ class AccountsMethods(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-@permission_classes([IsAuthenticated])
 class AccountMethods(APIView):
+    permission_classes = [IsAdminUser]
 
     def get(self, request, pk):
         user = get_object_or_404(User, pk=pk)
@@ -75,12 +75,12 @@ class AccountMethods(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-@permission_classes([IsAuthenticated])
 class SummariesMethods(APIView):
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        summary = Summary.objects.all()
-        serializer = SummarySerializer(summary, many=True)
+        summaries = Summary.objects.filter(user=request.user)
+        serializer = SummarySerializer(summaries, many=True)
         return Response(serializer.data)
 
     def post(self, request):
@@ -91,8 +91,8 @@ class SummariesMethods(APIView):
         return Response({"message": "Bad request"}, status=status.HTTP_400_BAD_REQUEST)
 
 
-@permission_classes([IsAuthenticated])
 class SummaryMethods(APIView):
+    permission_classes = [IsAuthenticated]
 
     def put(self, request, pk):
         summary = Summary.objects.get(id=pk)
@@ -108,11 +108,11 @@ class SummaryMethods(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-@permission_classes([IsAuthenticated])
 class MovementsMethods(APIView):
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        movements = Movement.objects.all()
+        movements = Movement.objects.filter(user=request.user)
         serializer = MovementSerializer(movements, many=True)
         return Response(serializer.data)
 
@@ -123,8 +123,8 @@ class MovementsMethods(APIView):
         return Response(serializer.data)
 
 
-@permission_classes([IsAuthenticated])
 class MovementMethods(APIView):
+    permission_classes = [IsAuthenticated]
 
     def put(self, request, pk):
         movement = get_object_or_404(Movement, pk=pk)
