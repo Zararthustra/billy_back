@@ -25,12 +25,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/{{baseUri}}/accounts",
+							"raw": "{{protocol}}://{{host}}{{port}}/{{baseUri}}/accounts",
 							"protocol": "{{protocol}}",
 							"host": [
-								"{{host}}"
+								"{{host}}{{port}}"
 							],
-							"port": "{{port}}",
 							"path": [
 								"{{baseUri}}",
 								"accounts"
@@ -55,16 +54,21 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/{{baseUri}}/accounts/{{accountId}}",
+							"raw": "{{protocol}}://{{host}}{{port}}/{{baseUri}}/accounts/:accountId",
 							"protocol": "{{protocol}}",
 							"host": [
-								"{{host}}"
+								"{{host}}{{port}}"
 							],
-							"port": "{{port}}",
 							"path": [
 								"{{baseUri}}",
 								"accounts",
-								"{{accountId}}"
+								":accountId"
+							],
+							"variable": [
+								{
+									"key": "accountId",
+									"value": "1"
+								}
 							]
 						}
 					},
@@ -95,16 +99,21 @@
 							}
 						},
 						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/{{baseUri}}/accounts/{{accountId}}",
+							"raw": "{{protocol}}://{{host}}{{port}}/{{baseUri}}/accounts/:accountId",
 							"protocol": "{{protocol}}",
 							"host": [
-								"{{host}}"
+								"{{host}}{{port}}"
 							],
-							"port": "{{port}}",
 							"path": [
 								"{{baseUri}}",
 								"accounts",
-								"{{accountId}}"
+								":accountId"
+							],
+							"variable": [
+								{
+									"key": "accountId",
+									"value": null
+								}
 							]
 						}
 					},
@@ -126,16 +135,21 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/{{baseUri}}/accounts/{{accountId}}",
+							"raw": "{{protocol}}://{{host}}{{port}}/{{baseUri}}/accounts/:accountId",
 							"protocol": "{{protocol}}",
 							"host": [
-								"{{host}}"
+								"{{host}}{{port}}"
 							],
-							"port": "{{port}}",
 							"path": [
 								"{{baseUri}}",
 								"accounts",
-								"{{accountId}}"
+								":accountId"
+							],
+							"variable": [
+								{
+									"key": "accountId",
+									"value": null
+								}
 							]
 						}
 					},
@@ -163,7 +177,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"year\": 2022,\r\n    \"month\": 10,\r\n    \"sold\": 1230\r\n}",
+							"raw": "{\r\n    \"year\": 2021,\r\n    \"month\": 12,\r\n    \"sold\": 1107\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -171,12 +185,11 @@
 							}
 						},
 						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/{{baseUri}}/summary",
+							"raw": "{{protocol}}://{{host}}{{port}}/{{baseUri}}/summary",
 							"protocol": "{{protocol}}",
 							"host": [
-								"{{host}}"
+								"{{host}}{{port}}"
 							],
-							"port": "{{port}}",
 							"path": [
 								"{{baseUri}}",
 								"summary"
@@ -201,12 +214,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/{{baseUri}}/summary",
+							"raw": "{{protocol}}://{{host}}{{port}}/{{baseUri}}/summary",
 							"protocol": "{{protocol}}",
 							"host": [
-								"{{host}}"
+								"{{host}}{{port}}"
 							],
-							"port": "{{port}}",
 							"path": [
 								"{{baseUri}}",
 								"summary"
@@ -240,16 +252,21 @@
 							}
 						},
 						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/{{baseUri}}/summary/{{summaryId}}",
+							"raw": "{{protocol}}://{{host}}{{port}}/{{baseUri}}/summary/:summaryId",
 							"protocol": "{{protocol}}",
 							"host": [
-								"{{host}}"
+								"{{host}}{{port}}"
 							],
-							"port": "{{port}}",
 							"path": [
 								"{{baseUri}}",
 								"summary",
-								"{{summaryId}}"
+								":summaryId"
+							],
+							"variable": [
+								{
+									"key": "summaryId",
+									"value": null
+								}
 							]
 						}
 					},
@@ -270,26 +287,22 @@
 						},
 						"method": "DELETE",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"year\": 2023,\r\n    \"month\": 10,\r\n    \"sold\": 1230\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/{{baseUri}}/summary/{{summaryId}}",
+							"raw": "{{protocol}}://{{host}}{{port}}/{{baseUri}}/summary/:summaryId",
 							"protocol": "{{protocol}}",
 							"host": [
-								"{{host}}"
+								"{{host}}{{port}}"
 							],
-							"port": "{{port}}",
 							"path": [
 								"{{baseUri}}",
 								"summary",
-								"{{summaryId}}"
+								":summaryId"
+							],
+							"variable": [
+								{
+									"key": "summaryId",
+									"value": "19"
+								}
 							]
 						}
 					},
@@ -317,7 +330,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"year\": 2022,\r\n    \"month\": 10,\r\n    \"sold\": 1230,\r\n    \"day\": 4,\r\n    \"lib\": \"boulangerie\",\r\n    \"value\": 15.5,\r\n    \"rec\": true\r\n}",
+							"raw": "{\r\n    \"year\": 2022,\r\n    \"month\": 11,\r\n    \"sold\": 0,\r\n    \"day\": 4,\r\n    \"lib\": \"boulangerie\",\r\n    \"value\": 15.5,\r\n    \"rec\": false\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -325,12 +338,11 @@
 							}
 						},
 						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/{{baseUri}}/movements",
+							"raw": "{{protocol}}://{{host}}{{port}}/{{baseUri}}/movements",
 							"protocol": "{{protocol}}",
 							"host": [
-								"{{host}}"
+								"{{host}}{{port}}"
 							],
-							"port": "{{port}}",
 							"path": [
 								"{{baseUri}}",
 								"movements"
@@ -355,12 +367,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/{{baseUri}}/movements",
+							"raw": "{{protocol}}://{{host}}{{port}}/{{baseUri}}/movements",
 							"protocol": "{{protocol}}",
 							"host": [
-								"{{host}}"
+								"{{host}}{{port}}"
 							],
-							"port": "{{port}}",
 							"path": [
 								"{{baseUri}}",
 								"movements"
@@ -394,16 +405,21 @@
 							}
 						},
 						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/{{baseUri}}/movements/{{movementId}}",
+							"raw": "{{protocol}}://{{host}}{{port}}/{{baseUri}}/movements/:movementId",
 							"protocol": "{{protocol}}",
 							"host": [
-								"{{host}}"
+								"{{host}}{{port}}"
 							],
-							"port": "{{port}}",
 							"path": [
 								"{{baseUri}}",
 								"movements",
-								"{{movementId}}"
+								":movementId"
+							],
+							"variable": [
+								{
+									"key": "movementId",
+									"value": null
+								}
 							]
 						}
 					},
@@ -425,16 +441,21 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/{{baseUri}}/movements/{{movementId}}",
+							"raw": "{{protocol}}://{{host}}{{port}}/{{baseUri}}/movements/:movementId",
 							"protocol": "{{protocol}}",
 							"host": [
-								"{{host}}"
+								"{{host}}{{port}}"
 							],
-							"port": "{{port}}",
 							"path": [
 								"{{baseUri}}",
 								"movements",
-								"{{movementId}}"
+								":movementId"
+							],
+							"variable": [
+								{
+									"key": "movementId",
+									"value": null
+								}
 							]
 						}
 					},
@@ -452,7 +473,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"{{username}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+							"raw": "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -460,12 +481,11 @@
 							}
 						},
 						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/{{baseUri}}/register",
+							"raw": "{{protocol}}://{{host}}{{port}}/{{baseUri}}/register",
 							"protocol": "{{protocol}}",
 							"host": [
-								"{{host}}"
+								"{{host}}{{port}}"
 							],
-							"port": "{{port}}",
 							"path": [
 								"{{baseUri}}",
 								"register"
@@ -489,12 +509,11 @@
 							}
 						},
 						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/{{baseUri}}/token/",
+							"raw": "{{protocol}}://{{host}}{{port}}/{{baseUri}}/token/",
 							"protocol": "{{protocol}}",
 							"host": [
-								"{{host}}"
+								"{{host}}{{port}}"
 							],
-							"port": "{{port}}",
 							"path": [
 								"{{baseUri}}",
 								"token",
@@ -676,12 +695,11 @@
 							}
 						},
 						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/{{baseUri}}/token/refresh/",
+							"raw": "{{protocol}}://{{host}}{{port}}/{{baseUri}}/token/refresh/",
 							"protocol": "{{protocol}}",
 							"host": [
-								"{{host}}"
+								"{{host}}{{port}}"
 							],
-							"port": "{{port}}",
 							"path": [
 								"{{baseUri}}",
 								"token",
