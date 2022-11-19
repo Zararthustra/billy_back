@@ -21,7 +21,7 @@ class RegisterView(APIView):
             return Response({"message": "User created successfully"}, status=status.HTTP_201_CREATED)
         except Exception as e:
             print(e)
-            return Response({"message": "User already exist !"}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"BAD_REQUEST": "User might already exist."}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
